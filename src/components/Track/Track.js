@@ -1,20 +1,34 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './Track.css';
 
-export default function Track() {
-  const renderAction = () => {
-    if (!isRemoval) {
-      return <button>+</button>;
-    }
-    return <button>-</button>;
-  };
+export default function Track(track) {
+  const [isRemoval, setIsRemoval] = useState(true);
+  // const renderAction = () => {
+  //   if (!isRemoval) {
+  //     setIsRemoval(true);
+  //     return <button>+</button>;
+  //   }
+  //   setIsRemoval(false);
+  //   return <button>-</button>;
+  // };
   return (
-    <div className="Track">
-      <div className="Track-information">
-        {/* <h3><!-- track name will go here --></h3> */}
-        {/* <p><!-- track artist will go here--> | <!-- track album will go here --></p> */}
-      </div>
-      <button className="Track-action">{renderAction}</button>
-    </div>
+    <>
+      {isRemoval ? (
+        <div className="Track">
+          <div className="Track-information">
+            <h3>{track.name}</h3>
+            <p>
+              {track.artist} | {track.album}
+            </p>
+          </div>
+          <button
+            className="Track-action"
+            onClick={() => setIsRemoval(!isRemoval)}
+          >
+            -
+          </button>
+        </div>
+      ) : null}
+    </>
   );
 }
