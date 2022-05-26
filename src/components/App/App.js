@@ -29,12 +29,19 @@ export default function App() {
     },
   ]);
 
-  console.log(`playlistTracks: ${playlistTracks[0].name}`);
+  // console.log(`playlistTracks: ${playlistTracks[0].name}`);
   const addTrack = (track) => {
     if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) {
       return;
     }
     setPlaylistTracks([...playlistTracks, track]);
+  };
+
+  const removeTrack = (track) => {
+    const newPlaylistTracks = playlistTracks.filter(
+      (currentTrack) => currentTrack.id !== track.id
+    );
+    setPlaylistTracks(newPlaylistTracks);
   };
   return (
     <div>
@@ -43,7 +50,11 @@ export default function App() {
         <SearchBar />
         <div className="App-playlist">
           <SearchResults searchResults={searchResults} onAdd={addTrack} />
-          <Playlist playlistName={playlistName} tracks={playlistTracks} />
+          <Playlist
+            playlistName={playlistName}
+            tracks={playlistTracks}
+            onRemove={removeTrack}
+          />
         </div>
       </div>
     </div>

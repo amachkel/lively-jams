@@ -16,6 +16,8 @@ export default function TrackList(props) {
               <Track
                 track={track}
                 onAdd={props.onAdd}
+                onRemove={props.onRemove}
+                isRemoval={props.isRemoval}
                 // setSearchResults={setSearchResults}
               />
             </div>
