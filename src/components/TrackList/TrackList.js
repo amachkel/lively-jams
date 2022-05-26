@@ -2,12 +2,7 @@ import React from 'react';
 import './TrackList.css';
 import Track from '../Track/Track';
 
-export default function TrackList(
-  props
-  // playlistTracks
-  // setSearchResults,
-  // onAdd
-) {
+export default function TrackList(props) {
   console.log(props.tracks);
 
   return (
@@ -20,7 +15,7 @@ export default function TrackList(
             <div className="track" key={track.id}>
               <Track
                 track={track}
-                // onAdd={onAdd}
+                onAdd={props.onAdd}
                 // setSearchResults={setSearchResults}
               />
             </div>

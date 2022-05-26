@@ -9,8 +9,8 @@ export default function SearchResults(props) {
       <h2>Results</h2>
       <TrackList
         tracks={props.searchResults}
-        // setSearchResults={setSearchResults}
-        // onAdd={onAdd}
+        onAdd={props.onAdd}
+        isRemoval={false}
       />
     </div>
   );

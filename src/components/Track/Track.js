@@ -1,22 +1,34 @@
 import { React, useState } from 'react';
 import './Track.css';
 
-export default function Track(track) {
-  const [isRemoval, setIsRemoval] = useState(true);
-  console.log(track.track);
+export default function Track(props) {
+  const [isRemoval, setIsRemoval] = useState(false);
+  console.log(props);
+  const addTrack = (track) => {
+    console.log(`addTrack called`);
+    props.onAdd(track);
+  };
+  console.log(props.track);
+
+  const renderAction = () => {
+    if (isRemoval) {
+      return <button className="Track-action">-</button>;
+    }
+    return (
+      <button className="Track-action" onClick={() => addTrack(props.track)}>
+        +
+      </button>
+    );
+  };
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{track.track.name}</h3>
+        <h3>{props.track.name}</h3>
         <p>
-          {track.track.artist} | {track.track.album}
+          {props.track.artist} | {props.track.album}
         </p>
       </div>
-      {isRemoval ? (
-        <button className="Track-action">-</button>
-      ) : (
-        <button className="Track-action">+</button>
-      )}
+      {renderAction()}
     </div>
   );
 }
