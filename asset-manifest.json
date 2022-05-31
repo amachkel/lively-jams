@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/lively-jams/static/css/main.e20fd1bd.css",
+    "main.js": "/lively-jams/static/js/main.96eedb84.js",
+    "static/media/caught-in-joy-ptVBlniJi50-unsplash.jpg": "/lively-jams/static/media/caught-in-joy-ptVBlniJi50-unsplash.4dc1906a6d6fc7b0fc2f.jpg",
+    "index.html": "/lively-jams/index.html",
+    "main.e20fd1bd.css.map": "/lively-jams/static/css/main.e20fd1bd.css.map",
+    "main.96eedb84.js.map": "/lively-jams/static/js/main.96eedb84.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e20fd1bd.css",
+    "static/js/main.96eedb84.js"
+  ]
+}
