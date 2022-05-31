@@ -1,6 +1,7 @@
 let accessToken;
 const clientId = 'ab70f37f182d43368f92792b3eff2e9a';
 const redirectUri = 'http://localhost:3000/';
+
 const Spotify = {
   getAccessToken() {
     if (accessToken) {
@@ -20,16 +21,16 @@ const Spotify = {
     }
   },
 
-  search(searchTerm) {
+  search(term) {
     const accessToken = Spotify.getAccessToken();
-    return (
-      fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`),
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }.then((res) =>
-        res.json().then((data) => {
+    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }).then((res) =>
+      res
+        .json()
+        .then((data) => {
           if (!data.tracks) {
             return [];
           }
@@ -42,12 +43,14 @@ const Spotify = {
             uri: track.uri,
           }));
         })
-      )
+        .catch((error) => {
+          console.error('Error in search request:', error);
+        })
     );
   },
 
   savePlaylist(name, trackUris) {
-    if (!playlistName || !trackUris) {
+    if (!name || !trackUris) {
       return;
     }
 
@@ -75,7 +78,13 @@ const Spotify = {
                 body: JSON.stringify({ uris: trackUris }),
               }
             );
+          })
+          .catch((error) => {
+            console.error('Error in uris POST request:', error);
           });
+      })
+      .catch((error) => {
+        console.error('Error in name POST request:', error);
       });
   },
 };

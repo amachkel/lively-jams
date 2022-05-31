@@ -4,12 +4,12 @@ import './SearchBar.css';
 export default function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const search = (term) => {
-    setSearchTerm(term);
+  const search = () => {
+    props.onSearch(searchTerm);
   };
 
   const handleTermChange = (e) => {
-    props.onSearch(e.target.value);
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -18,7 +18,9 @@ export default function SearchBar(props) {
         placeholder="Enter A Song, Album, or Artist"
         onChange={handleTermChange}
       />
-      <button className="SearchButton">SEARCH</button>
+      <button className="SearchButton" onClick={search}>
+        SEARCH
+      </button>
     </div>
   );
 }
