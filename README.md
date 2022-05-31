@@ -12,6 +12,8 @@ An app created with React.js that allows you to search for music and create new 
 
 ## Usage
 
+![Screenshot](https://user-images.githubusercontent.com/84882398/171278779-47ecca4b-33c9-45a8-b98e-641bf813244e.png)
+
 ### [Visit the deployed app here!](https://amachkel.io/github/lively-jams)
 
 ## Technologies Used
