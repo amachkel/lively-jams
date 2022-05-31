@@ -12,13 +12,15 @@ export default function App() {
   const [playlistName, setPlaylistName] = useState('New Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  // console.log(`playlistTracks: ${playlistTracks[0].name}`);
   const addTrack = (track) => {
     if (playlistTracks.find((savedTrack) => savedTrack.id === track.id)) {
-      return;
+      return playlistTracks;
     }
-    setPlaylistTracks([...playlistTracks, track]);
-    console.log(`playlistTracks: ${[...playlistTracks]}`);
+    setPlaylistTracks(() => {
+      return [...playlistTracks, track];
+    });
+
+    console.log(`playlistTracks: ${playlistTracks.length}`);
     return playlistTracks;
   };
 
