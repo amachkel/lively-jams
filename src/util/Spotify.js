@@ -34,14 +34,16 @@ const Spotify = {
           if (!data.tracks) {
             return [];
           }
-
-          data.tracks.items.map((track) => ({
-            id: track.id,
-            name: track.name,
-            artist: track.artists[0].name,
-            album: track.album.name,
-            uri: track.uri,
-          }));
+          return data.tracks.items.map(
+            (track) => ({
+              id: track.id,
+              name: track.name,
+              artist: track.artists[0].name,
+              album: track.album.name,
+              uri: track.uri,
+            })
+            // console.log(data.tracks)
+          );
         })
         .catch((error) => {
           console.error('Error in search request:', error);
@@ -61,7 +63,7 @@ const Spotify = {
     return fetch('https://api.spotify.com/v1/me', { headers: headers })
       .then((res) => res.json())
       .then((data) => {
-        userId = data.id;
+        userId = data.id; //this works
         return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
           headers: headers,
           method: 'POST',

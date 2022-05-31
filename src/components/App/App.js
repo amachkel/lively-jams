@@ -18,6 +18,8 @@ export default function App() {
       return;
     }
     setPlaylistTracks([...playlistTracks, track]);
+    console.log(`playlistTracks: ${[...playlistTracks]}`);
+    return playlistTracks;
   };
 
   const removeTrack = (track) => {
@@ -25,10 +27,12 @@ export default function App() {
       (currentTrack) => currentTrack.id !== track.id
     );
     setPlaylistTracks(newPlaylistTracks);
+    return playlistTracks;
   };
 
   const updatePlaylistName = (name) => {
     setPlaylistName(name);
+    return playlistName;
   };
 
   const savePlaylist = () => {
@@ -43,6 +47,7 @@ export default function App() {
   const search = (searchTerm) => {
     Spotify.search(searchTerm).then((searchResults) => {
       setSearchResults(searchResults);
+      return searchResults;
     });
   };
 

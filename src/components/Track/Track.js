@@ -3,15 +3,15 @@ import './Track.css';
 
 export default function Track(props) {
   const [isRemoval, setIsRemoval] = useState(props.isRemoval);
-  console.log(props);
+  // console.log(props);
   const addTrack = (track) => {
     console.log(`addTrack called`);
-    props.onAdd(track);
+    return props.onAdd(track);
   };
-  console.log(props.track);
+  // console.log(props.track);
   const removeTrack = (track) => {
     console.log(`removeTrack called`);
-    props.onRemove(track);
+    return props.onRemove(track);
   };
   const renderAction = () => {
     if (isRemoval) {
